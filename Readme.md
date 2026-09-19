@@ -17,7 +17,7 @@
 
 ### 02. Low Level Design (LLD)
 
-#### 02.01. Environment Setup
+#### 02.01. Git Branching & PR strategies LLD
 ```mermaid
   sequenceDiagram
     actor Developer
@@ -41,19 +41,24 @@
 ```mermaid
   flowchart LR
     User(("User"))
+    Tester(("Tester"))
 
-    subgraph Testing["Testing => Playwright"]
+      subgraph Testing["Testing (stage)"]
+        Playwright["Playwright + TS"]
+      end
       subgraph Frontend["Frontend (stage)"]
-        React["React + Typescript"]
+        React["React + TS"]
       end
       subgraph Backend["Backend (stage)"]
-        Node["Node + Typescript"]
+        Node["Node + TS"]
         Express["Express"]
       end
-    end
 
     User --> Frontend
     Frontend --> Backend
+    Tester --> Testing
+    Testing --> Backend
+    Testing --> Frontend
     Node --> Express
 ```
 
@@ -88,6 +93,9 @@
     - Live: []()
 
 ### Teesting
+  - Report
+    - Local: [http://localhost:9323](http://localhost:9323)
+    - Live: []()
 
 ## Timeline History
 
