@@ -30,7 +30,7 @@ class ExpressConnection {
       response.status(200).json({
         success: true,
         status: "ok",
-        message: "node + Express server is healthy"
+        message: "Node + Express server is healthy"
       });
     });
   }

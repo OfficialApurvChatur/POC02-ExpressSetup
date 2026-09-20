@@ -87,3 +87,57 @@ test.describe("Node Connection", () => {
   });
 
 });
+
+test.describe("Express Connection", () => {
+
+  test("should return 200 status", async ({ request }) => {
+    const response = await request.get(`${BACKEND_URL}/health`);
+
+    expect(response.status()).toBe(200);
+  });
+
+  test("should return success as true", async ({ request }) => {
+    const response = await request.get(`${BACKEND_URL}/health`);
+
+    const body = await response.json();
+
+    expect(body.success).toBe(true);
+  });
+
+  test("should return status as ok", async ({ request }) => {
+    const response = await request.get(`${BACKEND_URL}/health`);
+
+    const body = await response.json();
+
+    expect(body.status).toBe("ok");
+  });
+
+  test("should return correct message", async ({ request }) => {
+    const response = await request.get(`${BACKEND_URL}/health`);
+
+    const body = await response.json();
+
+    expect(body.message).toBe(
+      "Node + Express server is healthy"
+    );
+  });
+
+  test("should return JSON content type", async ({ request }) => {
+    const response = await request.get(`${BACKEND_URL}/health`);
+
+    expect(response.headers()["content-type"])
+      .toContain("application/json");
+  });
+
+  test("should return complete health response", async ({ request }) => {
+    const response = await request.get(`${BACKEND_URL}/health`);
+
+    expect(await response.json()).toEqual({
+      success: true,
+      status: "ok",
+      message: "Node + Express server is healthy"
+    });
+  });
+
+});
+
