@@ -1,8 +1,13 @@
 import express from "express";
 import path from "path";
+import fs from "fs/promises";
+import { getEnv } from "./EnvironmentConnection.js";
 
 
-const PORT = process.env.PORT || 8000;
+const ENV = getEnv.ENV;
+const MACHINE = getEnv.MACHINE;
+const PORT = getEnv.PORT;
+const APP_NAME = getEnv.APP_NAME;
 
 class ExpressConnection {
   private connection!: express.Express;
@@ -22,8 +27,19 @@ class ExpressConnection {
   }
 
   private setRoute() {
-    this.connection.get("/", (_request, response) => {
-      response.sendFile(path.join(process.cwd(), "index.html"))
+    this.connection.get("/", async (_request, response) => {
+      const indexHTML = await fs.readFile(
+        path.join(process.cwd(), "index.html"),
+        "utf-8"
+      )
+
+      const updatedHTML = indexHTML.
+        replace("{{ ENV }}", ENV).
+        replace("{{ MACHINE }}", MACHINE).
+        replace("{{ PORT }}", String(PORT)).
+        replace("{{ APP_NAME }}", APP_NAME);
+
+      response.send(updatedHTML);
     });
 
     this.connection.get("/health", (_request, response) => {
@@ -37,7 +53,12 @@ class ExpressConnection {
 
   public listenConnection() {
     this.connection.listen(PORT, () => {
-      console.log(`Node + Express connection listening on http://localhost:${PORT} at PORT: ${PORT}`);
+      console.log(`Node + Express connection listening on http://localhost:${PORT}`);
+      console.log(`
+        url: http://localhost:${PORT}
+        PORT: ${PORT}
+        APP_NAME: ${APP_NAME}
+      `);
     })
   }
 
