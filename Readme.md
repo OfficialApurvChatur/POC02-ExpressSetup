@@ -27,7 +27,8 @@
     participant Stage
     participant Prod
     
-    Developer -->> Feature/* : create & push
+    Developer -->> Develop : switch
+    Develop -->> Feature/* : create & push
     Feature/* -->> Develop : merge (feature/*)
     Develop -->> Test : merge (develop)
     Test -->> Stage : merge (test)
@@ -47,6 +48,7 @@
       end
       subgraph Frontend["Frontend (stage)"]
         React["React + TS"]
+        Shadcn["Shadcn"]
       end
       subgraph Backend["Backend (stage)"]
         Node["Node + TS"]
@@ -54,6 +56,7 @@
       end
 
     User --> Frontend
+      React --> Shadcn
     Frontend --> Backend
     Tester --> Testing
     Testing --> Backend
