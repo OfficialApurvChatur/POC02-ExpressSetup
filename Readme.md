@@ -72,7 +72,7 @@
     Testing --> Frontend
 ```
 
-#### 02.02. Servers & DNS LLD
+#### 02.03. Servers & DNS LLD
 ```mermaid
   flowchart TB
     User(("User"))
@@ -95,6 +95,26 @@
     Internet --> Backend
     NetlifyDNS <--> NetlifyServer
     RenderDNS <--> RenderServer
+    
+```
+
+#### 02.04. Environment Setup LLD
+```mermaid
+  flowchart LR
+    User(("User"))
+    Project["Project"]
+    subgraph Environment["Environment"]
+      direction LR
+      Develop["Develop"]
+      Test["Test"]
+      Stage["Stage"]
+      Prod["Prod"]
+    end
+    Initialize["Initialize"]
+
+    User --> Project
+    Project --> Environment
+    Environment --> Initialize
     
 ```
 
