@@ -16,7 +16,7 @@ test.describe("React Connection", () => {
     await page.goto(FRONTEND_URL);
 
     await expect(
-      page.getByRole("heading", { name: "React Connection" })
+      page.getByText("React Connection", { exact: true })
     ).toBeVisible();
   });
 
@@ -68,4 +68,46 @@ test.describe("React Connection", () => {
     await expect(listItems).toHaveCount(4);
   });
 
+});
+
+test.describe("Shadcn Connection", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(FRONTEND_URL);
+  });
+
+  test("should display Shadcn connection title", async ({ page }) => {
+    await expect(
+      page.getByText("Shadcn Connection", { exact: true })
+    ).toBeVisible();
+  });
+
+  test("should display Shadcn connection description", async ({ page }) => {
+    await expect(
+      page.getByText(
+        "Shadcn connection created successfully...",
+        { exact: true }
+      )
+    ).toBeVisible();
+  });
+
+  test("should display Hello button", async ({ page }) => {
+    await expect(
+      page.getByRole("button", { name: "Hello..." })
+    ).toBeVisible();
+  });
+
+  test("should display complete Shadcn connection", async ({ page }) => {
+    const alert = page.getByRole("alert");
+
+    await expect(alert).toBeVisible();
+
+    await expect(alert).toContainText("Shadcn Connection");
+    await expect(alert).toContainText(
+      "Shadcn connection created successfully..."
+    );
+
+    await expect(
+      alert.getByRole("button", { name: "Hello..." })
+    ).toBeVisible();
+  });
 });
