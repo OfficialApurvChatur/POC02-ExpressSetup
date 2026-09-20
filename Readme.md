@@ -27,9 +27,8 @@
     participant Stage
     participant Prod
     
-    Developer -->> Develop : push
-    Develop -->> Feature/* : pull
-    Feature/* -->> Develop : push
+    Developer -->> Feature/* : create & push
+    Feature/* -->> Develop : merge (feature/*)
     Develop -->> Test : merge (develop)
     Test -->> Stage : merge (test)
     Stage -->> Prod : merge (stage)
@@ -80,16 +79,16 @@
 
 ### Frontend
   - Development
-    - Local: []()
+    - Local: [http://localhost:5173](http://localhost:5173)
     - Live: []()
   - Testing
-    - Local: []()
+    - Local: [http://localhost:5173](http://localhost:5173)
     - Live: []()
   - Staging
-    - Local: []()
+    - Local: [http://localhost:5173](http://localhost:5173)
     - Live: []()
   - Production
-    - Local: []()
+    - Local: [http://localhost:5173](http://localhost:5173)
     - Live: []()
 
 ### Teesting
