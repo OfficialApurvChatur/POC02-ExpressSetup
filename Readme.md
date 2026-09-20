@@ -27,9 +27,8 @@
     participant Stage
     participant Prod
     
-    Developer -->> Develop : push
-    Develop -->> Feature/* : pull
-    Feature/* -->> Develop : push
+    Developer -->> Feature/* : create & push
+    Feature/* -->> Develop : merge (feature/*)
     Develop -->> Test : merge (develop)
     Test -->> Stage : merge (test)
     Stage -->> Prod : merge (stage)
