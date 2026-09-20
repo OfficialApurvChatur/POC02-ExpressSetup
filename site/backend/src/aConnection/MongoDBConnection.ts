@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 
 
-const MONGODBURI = 
-  process.env.MONGODB_URI || "mongodb+srv://ApurvChatur:ApurvChatur@cluster0.ohu59.mongodb.net/";
+const MONGODB_URL = 
+  process.env.MONGODB_URL || "mongodb+srv://ApurvChatur:ApurvChatur@cluster0.ohu59.mongodb.net/";
 const APP_NAME = process.env.APP_NAME || "POC-02:ExpressConnection";
 
 class MongoDBConnection {
-  private connection: string = MONGODBURI;
+  private connection: string = MONGODB_URL;
 
   constructor() {
     // Listen mongodb connection

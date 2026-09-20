@@ -1,8 +1,13 @@
 import { test, expect } from "@playwright/test";
+import mongoose from "mongoose";
 
 
 const BACKEND_URL =
   process.env.BACKEND_URL || "http://localhost:8000";
+const MONGODB_URL = 
+  process.env.MONGODB_URL || "mongodb+srv://ApurvChatur:ApurvChatur@cluster0.ohu59.mongodb.net/";
+const APP_NAME =
+  process.env.APP_NAME || "POC-02:ExpressConnection";
 
 test.describe("Node Connection", () => {
 
@@ -141,3 +146,30 @@ test.describe("Express Connection", () => {
 
 });
 
+test.describe("MongoDB Connection", () => {
+
+  test("should create MongoDB connection", async () => {
+
+    await mongoose.connect(MONGODB_URL, {
+      dbName: APP_NAME
+    });
+
+    expect(mongoose.connection.readyState).toBe(1);
+
+    await mongoose.disconnect();
+
+  });
+
+  test("should have database name", async () => {
+
+    await mongoose.connect(MONGODB_URL, {
+      dbName: APP_NAME
+    });
+
+    expect(mongoose.connection.name).toBe(APP_NAME);
+
+    await mongoose.disconnect();
+
+  });
+
+});
