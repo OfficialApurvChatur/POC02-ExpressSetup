@@ -72,35 +72,61 @@
     Testing --> Frontend
 ```
 
+#### 02.02. Servers & DNS LLD
+```mermaid
+  flowchart TB
+    User(("User"))
+    Internet["Internet"]
+
+    subgraph Frontend
+      direction TB
+      NetlifyServer["Netlify Server"]
+      NetlifyDNS["Netlify DNS"]
+    end
+
+    subgraph Backend
+      direction TB
+      RenderServer["Render Server"]
+      RenderDNS["Render DNS"]
+    end
+
+    User --> Internet
+    Internet --> Frontend
+    Internet --> Backend
+    NetlifyDNS <--> NetlifyServer
+    RenderDNS <--> RenderServer
+    
+```
+
 ## Servers & DNS
 
 ### Backend
   - Development
     - Local: [http://localhost:8000/](http://localhost:8000/)
-    - Live: []()
+    - Live: [https://express-v01-backend-develop.onrender.com](https://express-v01-backend-develop.onrender.com)
   - Testing
     - Local: [http://localhost:8000/](http://localhost:8000/)
-    - Live: []()
+    - Live: [https://express-v01-backend-test.onrender.com](https://express-v01-backend-test.onrender.com)
   - Staging
     - Local: [http://localhost:8000/](http://localhost:8000/)
-    - Live: []()
+    - Live: [https://express-v01-backend-stage.onrender.com](https://express-v01-backend-stage.onrender.com)
   - Production
     - Local: [http://localhost:8000/](http://localhost:8000/)
-    - Live: []()
+    - Live: [https://express-v01-backend-prod.onrender.com](https://express-v01-backend-prod.onrender.com)
 
 ### Frontend
   - Development
     - Local: [http://localhost:5173](http://localhost:5173)
-    - Live: []()
+    - Live: [https://express-v01-frontend-develop.netlify.app](https://express-v01-frontend-develop.netlify.app)
   - Testing
     - Local: [http://localhost:5173](http://localhost:5173)
-    - Live: []()
+    - Live: [https://express-v01-frontend-test.netlify.app](https://express-v01-frontend-test.netlify.app)
   - Staging
     - Local: [http://localhost:5173](http://localhost:5173)
-    - Live: []()
+    - Live: [https://express-v01-frontend-stage.netlify.app](https://express-v01-frontend-stage.netlify.app)
   - Production
     - Local: [http://localhost:5173](http://localhost:5173)
-    - Live: []()
+    - Live: [https://express-v01-frontend-prod.netlify.app](https://express-v01-frontend-prod.netlify.app)
 
 ### Teesting
   - Report
