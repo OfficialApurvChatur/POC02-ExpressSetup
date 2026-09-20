@@ -6,11 +6,14 @@
 ```mermaid
   sequenceDiagram
     actor User
+    participant Frontend
     participant Backend
-    participant Backend
+    participant Database
 
     User -->> Frontend : ui req
     Frontend -->> Backend : api req
+    Backend -->> Database : store
+    Database -->> Backend : retrieve
     Backend -->> Frontend : api res
     Frontend -->> User : ui res
 ```
@@ -28,7 +31,8 @@
     participant Prod
     
     Developer -->> Develop : switch
-    Develop -->> Feature/* : create & push
+    Develop -->> Feature/* : create
+    Feature/* -->> Feature/* : push
     Feature/* -->> Develop : merge (feature/*)
     Develop -->> Test : merge (develop)
     Test -->> Stage : merge (test)
@@ -54,14 +58,18 @@
         Node["Node + TS"]
         Express["Express"]
       end
+      subgraph Database["Database"]
+        MongoDB["MongoDB"]
+      end
 
     User --> Frontend
       React --> Shadcn
     Frontend --> Backend
+      Node --> Express
+    Backend --> Database
     Tester --> Testing
     Testing --> Backend
     Testing --> Frontend
-    Node --> Express
 ```
 
 ## Servers & DNS
