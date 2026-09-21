@@ -1,13 +1,11 @@
 import { test, expect } from "@playwright/test";
 import mongoose from "mongoose";
+import { getEnv } from "../src/aConnection/EnvironmentConnection";
 
 
-const BACKEND_URL =
-  process.env.BACKEND_URL || "http://localhost:8000";
-const MONGODB_URL = 
-  process.env.MONGODB_URL || "mongodb+srv://ApurvChatur:ApurvChatur@cluster0.ohu59.mongodb.net/";
-const APP_NAME =
-  process.env.APP_NAME || "POC-02:ExpressConnection";
+const BACKEND_URL = getEnv.BACKEND_URL;
+const MONGODB_URL = getEnv.MONGODB_URL;
+const APP_NAME = getEnv.APP_NAME;
 
 test.describe("Node Connection", () => {
 
@@ -76,7 +74,7 @@ test.describe("Node Connection", () => {
 
     await expect(
       page.locator("ul li").nth(3)
-    ).toContainText("App:");
+    ).toContainText("App Name:");
   });
 
   test("should have backend favicon", async ({ request }) => {

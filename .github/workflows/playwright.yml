@@ -12,11 +12,20 @@ jobs:
       run:
         working-directory: site/testing
     env:
+      ENV: ${{ secrets.ENV }}
+      MACHINE: ${{ secrets.MACHINE }}
+      PORT: ${{ secrets.PORT }}
+      APP_NAME: ${{ secrets.APP_NAME }}
       FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
       BACKEND_URL: ${{ secrets.BACKEND_URL }}
       MONGODB_URL: ${{ secrets.MONGODB_URL }}
-      APP_NAME: ${{ secrets.APP_NAME }}
     steps:
+    - name: Show configuration
+      run: |
+        echo "ENV=$ENV"
+        echo "MACHINE=$MACHINE"
+        echo "PORT=$PORT"
+        echo "APP_NAME=$APP_NAME"
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
@@ -31,5 +40,5 @@ jobs:
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
-        path: playwright-report/
+        path: site/testing/playwright-report/
         retention-days: 30

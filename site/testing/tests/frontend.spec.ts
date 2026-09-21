@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
+import { getEnv } from "../src/aConnection/EnvironmentConnection";
 
 
-const FRONTEND_URL = 
-  process.env.FRONTEND_URL || "http://localhost:5173";
+const FRONTEND_URL = getEnv.FRONTEND_URL
   
 test.describe("React Connection", () => {
 
@@ -57,7 +57,7 @@ test.describe("React Connection", () => {
 
     await expect(
       page.locator("ul li").nth(3)
-    ).toContainText("App:");
+    ).toContainText("App Name:");
   });
 
   test("should have four environment details", async ({ page }) => {

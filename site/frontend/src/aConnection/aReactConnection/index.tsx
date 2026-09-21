@@ -50,7 +50,7 @@ const ReactConnection = () => {
               <li>Environment: {ENV}</li>
               <li>Machine: {MACHINE}</li>
               <li>PORT: {PORT}</li>
-              <li>App: {APP_NAME}</li>
+              <li>App Name: {APP_NAME}</li>
             </ul>
           </CardContent>
         </Card>    
