@@ -8,6 +8,14 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site/testing
+    env:
+      FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
+      BACKEND_URL: ${{ secrets.BACKEND_URL }}
+      MONGODB_URL: ${{ secrets.MONGODB_URL }}
+      APP_NAME: ${{ secrets.APP_NAME }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
