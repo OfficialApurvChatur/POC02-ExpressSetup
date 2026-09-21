@@ -122,30 +122,30 @@
 
 ### Backend
   - Development
-    - Local: [http://localhost:8000/](http://localhost:8000/)
+    - Local: [http://localhost:8001/](http://localhost:8001/)
     - Live: [https://express-v01-backend-develop.onrender.com](https://express-v01-backend-develop.onrender.com)
   - Testing
-    - Local: [http://localhost:8000/](http://localhost:8000/)
+    - Local: [http://localhost:8002/](http://localhost:8002/)
     - Live: [https://express-v01-backend-test.onrender.com](https://express-v01-backend-test.onrender.com)
   - Staging
-    - Local: [http://localhost:8000/](http://localhost:8000/)
+    - Local: [http://localhost:8003/](http://localhost:8003/)
     - Live: [https://express-v01-backend-stage.onrender.com](https://express-v01-backend-stage.onrender.com)
   - Production
-    - Local: [http://localhost:8000/](http://localhost:8000/)
+    - Local: [http://localhost:8004/](http://localhost:8004/)
     - Live: [https://express-v01-backend-prod.onrender.com](https://express-v01-backend-prod.onrender.com)
 
 ### Frontend
   - Development
-    - Local: [http://localhost:5173](http://localhost:5173)
+    - Local: [http://localhost:3001](http://localhost:3001)
     - Live: [https://express-v01-frontend-develop.netlify.app](https://express-v01-frontend-develop.netlify.app)
   - Testing
-    - Local: [http://localhost:5173](http://localhost:5173)
+    - Local: [http://localhost:3002](http://localhost:3002)
     - Live: [https://express-v01-frontend-test.netlify.app](https://express-v01-frontend-test.netlify.app)
   - Staging
-    - Local: [http://localhost:5173](http://localhost:5173)
+    - Local: [http://localhost:3003](http://localhost:3003)
     - Live: [https://express-v01-frontend-stage.netlify.app](https://express-v01-frontend-stage.netlify.app)
   - Production
-    - Local: [http://localhost:5173](http://localhost:5173)
+    - Local: [http://localhost:3004](http://localhost:3004)
     - Live: [https://express-v01-frontend-prod.netlify.app](https://express-v01-frontend-prod.netlify.app)
 
 ### Teesting

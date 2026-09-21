@@ -14,6 +14,13 @@ import {
   AlertTitle,
 } from "@/aConnection/bShadcnConnection/components/ui/alert"
 import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
+import { getEnv } from "@/aConnection/cEnvironmentConnection";
+
+
+const ENV = getEnv.ENV;
+const MACHINE = getEnv.MACHINE;
+const PORT = getEnv.PORT;
+const APP_NAME = getEnv.APP_NAME;  
 
 const ReactConnection = () => {
   // Render check
@@ -40,10 +47,10 @@ const ReactConnection = () => {
           </CardHeader>
           <CardContent>
             <ul>
-              <li>Environment: </li>
-              <li>Machine: </li>
-              <li>PORT: </li>
-              <li>App: </li>
+              <li>Environment: {ENV}</li>
+              <li>Machine: {MACHINE}</li>
+              <li>PORT: {PORT}</li>
+              <li>App: {APP_NAME}</li>
             </ul>
           </CardContent>
         </Card>    
